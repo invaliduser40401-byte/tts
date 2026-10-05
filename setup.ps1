@@ -59,11 +59,11 @@ if (-not $py) {
 }
 if (-not $py) { throw "Python 3.13 could not be found." }
 
-if (-not (Test-Path ".venvScriptspython.exe")) {
+if (-not (Test-Path (Join-Path (Join-Path $PSScriptRoot ".venv") "Scripts\python.exe"))) {
     & py -3.13 -m venv .venv
 }
 
-$python = Join-Path $PSScriptRoot ".venvScriptspython.exe"
+$python = Join-Path (Join-Path $PSScriptRoot ".venv") "Scripts\python.exe"
 $voiceDir = Join-Path $PSScriptRoot "voices"
 New-Item -ItemType Directory -Force $voiceDir | Out-Null
 
